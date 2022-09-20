@@ -20,6 +20,31 @@ func main() {
 
 	fmt.Println("Starting Game Board empty")
 	board.displayBoard()
+
+	if rand.Intn(2) == 0{
+		playerMove = true
+	}else{
+		playerMove = false
+	}
+
+	for i:= 0 ; i <9; i++{
+		if playerMove{
+			fmt.Println("Player Move", i +1)
+			board.Player()
+			playerMove = false
+		}else {
+			fmt.Println("Computer Move", i +1)
+			board.computer()
+			playerMove = true
+		}
+
+		if whoWon, win = board.check(); win{
+			break
+		}
+		board.displayBoard()
+	}
+
+
 	fmt.Println("*****%v won *** final board view,", whoWon)
 }
 
