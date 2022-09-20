@@ -30,7 +30,7 @@ func main() {
 	for i:= 0 ; i <9; i++{
 		if playerMove{
 			fmt.Println("Player Move", i +1)
-			board.Player()
+			board.player()
 			playerMove = false
 		}else {
 			fmt.Println("Computer Move", i +1)
@@ -58,4 +58,20 @@ func (t ticktackBorad) displayBoard(){
 		fmt.Print("\n ----------")
 	}
 	fmt.Print("\n")
+}
+
+func (t *ticktackBorad) player(){
+	var x, y int
+	fmt.Println("Enter the row(1-3) and the column(1-3) positions: ")
+	
+	if _,err := fmt.Scan(&x, &y); err == nil{
+		x--
+		y--
+		if (x >=0 && x<=2) && (y >= 0 && y<= 2) && (t[x][y] == 0){
+			t[x][y] = 'X'
+		}else{
+			fmt.Println("Invalid input try again.")
+			t.player()
+		}
+	}
 }
