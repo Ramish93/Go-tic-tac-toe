@@ -97,4 +97,18 @@ func (t *ticktackBorad) check() (string, bool){
 			return "Computer", true
 		}
 	}
+	for i := 0; i < 3; i++ {
+		if (rune(t[0][i]) == 'X') && (t[0][i] == t[1][i]) && (t[0][i] == t[2][i]) {
+			return "Player", true
+		} else if (rune(t[0][i]) == 'O') && (t[0][i] == t[1][i]) && (t[0][i] == t[2][i]) {
+			return "Computer", true
+		}
+	}
+	if ((rune(t[0][0]) == 'X') && (t[0][0] == t[1][1]) && (t[1][1] == t[2][2])) || ((rune(t[0][2]) == 'X') && (t[0][2] == t[1][1]) && (t[1][1] == t[2][0])) {
+		return "Player", true
+	} else if ((rune(t[0][0]) == 'O') && (t[0][0] == t[1][1]) && (t[1][1] == t[2][2])) || ((rune(t[0][2]) == 'O') && (t[0][2] == t[1][1]) && (t[1][1] == t[2][0])) {
+		return "Computer", true
+	}
+
+	return "No one" , false
 }
