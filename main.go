@@ -75,3 +75,26 @@ func (t *ticktackBorad) player(){
 		}
 	}
 }
+
+func (t *ticktackBorad) computer(){
+
+	var x,y int
+	for {
+		x = rand.Intn(3)
+		y = rand.Intn(3)
+		if t[x][y] == 0 {
+			t[x][y] = 'O'
+			break
+		}
+	}
+}
+
+func (t *ticktackBorad) check() (string, bool){
+	for i:=0;i<3;i++ {
+		if(rune(t[i][0]) == 'X') && (t[i][0] == t[i][1]) && (t[i][0] == t[i][2]) {
+			return "Player" , true
+		} else if (rune(t[i][0]) == 'O') && (t[i][0] == t[i][1]) && (t[i][0] == t[i][2]) {
+			return "Computer", true
+		}
+	}
+}
